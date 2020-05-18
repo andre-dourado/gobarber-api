@@ -6,7 +6,7 @@ import AppError from '@shared/errors/AppError';
 // import User from '@modules/users/infra/typeorm/entities/User';
 
 import IUsersRepository from '../repositories/IUsersRepository';
-import IUsersTokensRepository from '../repositories/IUsersTokenRepository';
+import IUsersTokensRepository from '../repositories/IUserTokensRepository';
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
 
 interface IRequest {
