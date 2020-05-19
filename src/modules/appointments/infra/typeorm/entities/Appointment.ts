@@ -3,9 +3,9 @@ import {
   CreateDateColumn,
   Entity,
   JoinColumn,
-  ManyToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
+  ManyToOne,
 } from 'typeorm';
 import User from '@modules/users/infra/typeorm/entities/User';
 
@@ -17,9 +17,16 @@ class Appointment {
   @Column()
   provider_id: string;
 
-  @ManyToMany(() => User)
+  @ManyToOne(() => User)
   @JoinColumn({ name: 'provider_id' })
   provider: User;
+
+  @Column()
+  user_id: string;
+
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'user_id' })
+  user: User;
 
   @Column('timestamp with time zone')
   date: Date;
