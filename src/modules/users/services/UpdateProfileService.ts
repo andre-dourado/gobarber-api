@@ -16,7 +16,7 @@ interface IRequest {
 }
 
 @injectable()
-class UpdateProfile {
+class UpdateProfileService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
@@ -66,8 +66,10 @@ class UpdateProfile {
       user.password = await this.hashProvider.generateHash(password);
     }
 
+    await this.usersRepository.save(user);
+
     return user;
   }
 }
 
-export default UpdateProfile;
+export default UpdateProfileService;

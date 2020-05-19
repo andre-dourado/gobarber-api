@@ -1,6 +1,5 @@
-// import AppError from '@shared/errors/AppError';
-
 import AppError from '@shared/errors/AppError';
+
 import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider';
 import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
 import UpdateProfileService from './UpdateProfileService';
@@ -35,6 +34,16 @@ describe('SendForgotPasswordEmail', () => {
 
     expect(updatedUser.name).toBe('John Trê');
     expect(updatedUser.email).toBe('johntre@email.com');
+  });
+
+  it('should not be able update the profile from non-existing user', async () => {
+    await expect(
+      updateProfile.execute({
+        user_id: 'non-existing-user-id',
+        name: 'Test',
+        email: 'test@example.com',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
   });
 
   it('should not be able to change to another existing user email', async () => {
