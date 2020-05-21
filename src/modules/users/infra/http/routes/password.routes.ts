@@ -12,7 +12,7 @@ passwordRouter.post(
   '/forgot',
   celebrate({
     [Segments.BODY]: {
-      token: Joi.string().email().required(),
+      email: Joi.string().email().required(),
     },
   }),
   forgotPasswordController.create,
