@@ -16,6 +16,12 @@ jobs:
       with: 
         node-version: 12.x
         
+    - name: Storage yarn cache
+      uses: actions/cache@v2.1.0
+      with:
+        path: ~/.cache/yarn/v6
+        key: ${{ secrets.SSH_KEY }}
+        
     # Instalar as dependências NPM/Yarn
     - name: Install dependencies
       run: yarn
