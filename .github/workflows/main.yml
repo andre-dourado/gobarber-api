@@ -20,7 +20,7 @@ jobs:
       uses: actions/cache@v2.1.0
       with:
         path: ~/.cache/yarn/v6
-        key: ${{ secrets.SSH_KEY }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
         
     # Instalar as dependências NPM/Yarn
     - name: Install dependencies
